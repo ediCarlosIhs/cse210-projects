@@ -28,38 +28,42 @@ class Program
 
         }
 
-        foreach (int number in numbers)
+        if (numberInformed != 0)
         {
-            sum += number;
+            foreach (int number in numbers)
+            {
+                sum += number;
+            }
+
+            System.Console.WriteLine();
+            System.Console.WriteLine($"The sum is: {sum}");
+
+            average = (double)sum / numbers.Count;
+            System.Console.WriteLine($"The average is: {average}");
+
+            System.Console.WriteLine($"The largest number is: {numbers.Max()}");
+
+            // Stretch Challenge
+            numbers.Sort();
+
+            // The smallest positive number
+            int smallestPositive = numbers.Find(number =>
+            {
+                return number > 0 && number > numbers.Min();
+            });
+
+            System.Console.WriteLine($"The smallest positive number is: {smallestPositive}");
+
+            // Sort the numbers in the list and display the new, sorted list. 
+            System.Console.WriteLine("The sorted list is:");
+            System.Console.Write("[ ");
+            foreach (int number in numbers)
+            {
+                System.Console.Write($"{number} ");
+            }
+            System.Console.Write("]");
         }
 
-        System.Console.WriteLine();
-        System.Console.WriteLine($"The sum is: {sum}");
-
-        average = (double)sum / numbers.Count;
-        System.Console.WriteLine($"The average is: {average}");
-
-        System.Console.WriteLine($"The largest number is: {numbers.Max()}");
-
-        // Stretch Challenge
-        numbers.Sort();
-
-        // The smallest positive number
-        int smallestPositive = numbers.Find(number =>
-        {
-            return number > 0 && number > numbers.Min();
-        });
-
-        System.Console.WriteLine($"The smallest positive number is: {smallestPositive}");
-
-        // Sort the numbers in the list and display the new, sorted list. 
-        System.Console.WriteLine("The sorted list is:");
-        System.Console.Write("[ ");
-        foreach (int number in numbers)
-        {
-            System.Console.Write($"{number} ");
-        }
-        System.Console.Write("]");
 
     }
 }
