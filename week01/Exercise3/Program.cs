@@ -5,34 +5,48 @@ class Program
 {
     static void Main(string[] args)
     {
-
-        System.Console.Write("What is the magic number? ");
-        string magicNumber = Console.ReadLine();
-
+        Random randomNumber = new Random();
+        int magicNumber = randomNumber.Next(1, 100);
 
         string shot = string.Empty;
 
-        do
+        int guesses = 1;
+
+        string keepPlaying = "yes";
+
+        while (keepPlaying == "yes")
         {
-            System.Console.Write("What is your guess? ");
-            shot = Console.ReadLine();
+            do
+            {
+                System.Console.Write("What is your guess? ");
+                shot = Console.ReadLine();
 
-            if (int.Parse(magicNumber) > int.Parse(shot))
-            {
-                System.Console.WriteLine("Higher");
+                if (magicNumber > int.Parse(shot))
+                {
+                    System.Console.WriteLine("Higher");
+                }
+                else if (magicNumber < int.Parse(shot))
+                {
+                    System.Console.WriteLine("Lower");
+                }
+                else
+                {
+                    System.Console.WriteLine("You guessed it!");
+
+                    string text = guesses > 1 ? "Times" : "time";
+
+                    System.Console.WriteLine($"You tried {guesses} {text}.");
+                }
+
+                guesses++;
             }
-            else if (int.Parse(magicNumber) < int.Parse(shot))
-            {
-                System.Console.WriteLine("Lower");
-            }
-            else
-            {
-                System.Console.WriteLine("You guessed it!");
-            }
+            while (magicNumber != int.Parse(shot));
+
+            System.Console.Write("Do you want do keep playing? (write yes other word for not) ");
+            keepPlaying = Console.ReadLine();
+
+            keepPlaying = keepPlaying.ToLower();
         }
-        while (int.Parse(magicNumber) != int.Parse(shot));
-
-
 
     }
 }
