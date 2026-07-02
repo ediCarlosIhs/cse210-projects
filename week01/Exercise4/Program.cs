@@ -28,7 +28,7 @@ class Program
 
         }
 
-        if (numberInformed != 0)
+        if (numbers.Count > 0)
         {
             foreach (int number in numbers)
             {
@@ -47,10 +47,15 @@ class Program
             numbers.Sort();
 
             // The smallest positive number
-            int smallestPositive = numbers.Find(number =>
+            int smallestPositive = numbers.Max();
+
+            foreach (int number in numbers)
             {
-                return number > 0 && number > numbers.Min();
-            });
+                if (number > 0 && number < smallestPositive)
+                {
+                    smallestPositive = number;
+                }
+            }
 
             System.Console.WriteLine($"The smallest positive number is: {smallestPositive}");
 
