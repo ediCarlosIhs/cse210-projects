@@ -7,11 +7,6 @@ public class SimpleGoal : Goal
         _isComplete = false;
     }
 
-    public override bool IsComplete()
-    {
-        return _isComplete;
-    }
-
     public void SetComplete()
     {
         _isComplete = true;
@@ -20,6 +15,11 @@ public class SimpleGoal : Goal
     public override void RecordEvent()
     {
         _isComplete = true;
+    }
+
+    public override bool IsComplete()
+    {
+        return _isComplete;
     }
 
     public override string GetStringRepresentation()

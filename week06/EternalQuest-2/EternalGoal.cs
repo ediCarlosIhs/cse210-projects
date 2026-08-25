@@ -5,9 +5,9 @@ public class EternalGoal : Goal
 
     }
 
-    public override string GetStringRepresentation()
+    public override void RecordEvent()
     {
-        return $"EternalGoal:{GetShortName()}|{GetDescription()}|{GetPoints()}|{IsComplete()}";
+        
     }
 
     public override bool IsComplete()
@@ -15,8 +15,8 @@ public class EternalGoal : Goal
         return false;
     }
 
-    public override void RecordEvent()
+    public override string GetStringRepresentation()
     {
-        
+        return $"EternalGoal:{base.GetShortName()}|{GetDescription()}|{GetPoints()}";
     }
 }
