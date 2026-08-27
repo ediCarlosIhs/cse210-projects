@@ -146,6 +146,19 @@ public class GoalManager
                 EternalGoal eternalGoal = new EternalGoal(name, description, points);
                 _goals.Add(eternalGoal);
             }
+            else if (type == "ChecklistGoal")
+            {
+                int accomplishmentQuantity = int.Parse(goalsString[4].Trim());
+                int bonus = int.Parse(goalsString[3].Trim());
+                int amountCompleted = int.Parse(goalsString[5].Trim());
+                
+                ChecklistGoal checklistGoal = new ChecklistGoal(name, description, points, accomplishmentQuantity, bonus);
+                checklistGoal.SetAmountCompleted(amountCompleted);
+
+                _goals.Add(checklistGoal);
+
+
+            }
 
         }
 
@@ -208,6 +221,7 @@ public class GoalManager
         Console.WriteLine("\nThe type of Goals are:");
         Console.WriteLine("1. Simple Goal");
         Console.WriteLine("2. Eternal Goal");
+        Console.WriteLine("3. ChecklistGoal");
 
         Console.Write("Which type of goal would you like to create? ");
         string typeGoal = Console.ReadLine();
@@ -231,6 +245,17 @@ public class GoalManager
             case "2":
                 EternalGoal eternalGoal = new EternalGoal(name, description, points);
                 _goals.Add(eternalGoal);
+                break;
+
+            case "3":
+                Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+                int accomplishmentQuantity = int.Parse(Console.ReadLine());
+
+                Console.Write("What is the bonus for accomplishing it that many times? ");
+                int bonus = int.Parse(Console.ReadLine());
+
+                ChecklistGoal checklistGoal = new ChecklistGoal(name, description, points, accomplishmentQuantity, bonus);
+                _goals.Add(checklistGoal);
                 break;
 
             default:

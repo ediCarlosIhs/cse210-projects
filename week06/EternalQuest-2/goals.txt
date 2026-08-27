@@ -1,2 +1,2 @@
-50
-SimpleGoal:read the bible|reading the bible 10 minutes a day|50|True
+1250
+ChecklistGoal:read the Bible|(read the bible every day|1050|1000|5|5)
